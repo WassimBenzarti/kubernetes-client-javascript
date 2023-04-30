@@ -71,6 +71,10 @@ export class Watch {
         await fetch(watchURL, requestInit)
             .then((response) => {
                 if (response.status === 200) {
+                    if (response.body === null) {
+                        doneCallOnce("Body empty");
+                        return;
+                    }
                     response.body.on('error', doneCallOnce);
                     response.body.on('close', () => doneCallOnce(null));
                     response.body.on('finish', () => doneCallOnce(null));

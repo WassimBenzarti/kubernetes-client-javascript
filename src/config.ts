@@ -166,7 +166,8 @@ export class KubeConfig implements SecurityAuthentication {
             agent: opts.agent,
             headers,
             method: opts.method,
-            timeout: opts.timeout,
+            // TODO: Figure out the right way to set timeout in fetch...
+            // timeout: opts.timeout,
         };
     }
 
